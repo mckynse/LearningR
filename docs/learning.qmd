@@ -26,3 +26,7 @@ Man kan bruge gitignore til at skjule personfølsomme data eller data, der ikke 
 
 Dette gøres ved at indtaste dette i konsollen: 
 usethis::use_git_ignore(c("*.html", "*_files/"))
+
+## Testing for Git
+
+The weather is insanely cold and windy, yet it is a sunny and beautiful day.
