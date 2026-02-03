@@ -1,0 +1,28 @@
+---
+title: "Reproducible_Document"
+author: "rostools"
+format: html
+---
+
+Special "setup" code chunk: When you want your Quarto to run one specific, important code chunk before everything else - like loading in tidyverse
+```{r setup}
+#load in tidyverse; is not in itself a package but rather a meta-package
+library(tidyverse)
+```
+
+## About me
+
+- Cecilie Kynding
+- Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR), University of Copenhagen
+
+I'm a pre-PhD, doing a maternity cover in the Rodent Metabolic Phenotyping Platform at **CBMR**. Later this year, I'll start my PhD project, investigating *the potential of a growth hormone and semaglutide combination treatment regimen*.
+
+## Simple code
+
+```{r}
+3*3
+```
+Man kan bruge gitignore til at skjule personfølsomme data eller data, der ikke skal uploades til Git. Man behøver f.eks. ikke at uploade html eller word-filer, da disse genereres ud fra vores Quarto-filer. Så længe vi har vores originale Quarto-filer, kan vi altid regenerere html eller word-filer senere.
+
+Dette gøres ved at indtaste dette i konsollen: 
+usethis::use_git_ignore(c("*.html", "*_files/"))
