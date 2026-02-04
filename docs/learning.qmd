@@ -8,6 +8,9 @@ Special "setup" code chunk: When you want your Quarto to run one specific, impor
 ```{r setup}
 #load in tidyverse; is not in itself a package but rather a meta-package
 library(tidyverse)
+
+#for data separated by semicolons, we use the read_csv2() function instead of the read_csv()
+post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
 ```
 
 ## About me
@@ -30,3 +33,17 @@ usethis::use_git_ignore(c("*.html", "*_files/"))
 ## Testing for Git
 
 The weather is insanely cold and windy, yet it is a sunny and beautiful day.
+
+## Session 17 - Importing data into R
+
+For downloading data, we want to type it in the console rather than in a code chunk in our document, since if we run it in a code chunk in our document, we will download the file every time we render the document, instead of just downloading it once in the console.
+
+## Showing the data
+
+```{r}
+post_meal_data
+
+glimpse(post_meal_data)
+```
+
+
