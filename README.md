@@ -1,6 +1,6 @@
 TODO: Add more to the title of your project here
 
-Hi, I'm Cecilie Kynding learning R
+Hi from the other side (pull)
 
 # LearningR:
 
