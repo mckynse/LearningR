@@ -9,10 +9,10 @@ Special "setup" code chunk: When you want your Quarto to run one specific, impor
 #| message: false
 #| warning: false
 
-#load in tidyverse; is not in itself a package but rather a meta-package
+# load in tidyverse; is not in itself a package but rather a meta-package
 library(tidyverse)
 
-#for data separated by semicolons, we use the read_csv2() function instead of the read_csv()
+# for data separated by semicolons, we use the read_csv2() function instead of the read_csv()
 post_meal_data <- read_csv2(here::here("data/post-meal-insulin.csv"))
 ```
 
@@ -26,7 +26,7 @@ I'm a pre-PhD, doing a maternity cover in the Rodent Metabolic Phenotyping Platf
 ## Simple code
 
 ```{r}
-3*3
+3 * 3
 ```
 Man kan bruge gitignore til at skjule personfølsomme data eller data, der ikke skal uploades til Git. Man behøver f.eks. ikke at uploade html eller word-filer, da disse genereres ud fra vores Quarto-filer. Så længe vi har vores originale Quarto-filer, kan vi altid regenerere html eller word-filer senere.
 
@@ -54,7 +54,7 @@ glimpse(post_meal_data)
 ```{r}
 #| fig-cap: "Distribution of BMI"
 #| label: fig-bmi-histo
-ggplot(post_meal_data, aes(x = BMI)) + 
+ggplot(post_meal_data, aes(x = BMI)) +
   geom_histogram()
 ```
 Reference to figure, using added label in code chunk
@@ -77,6 +77,28 @@ See @fig-group-bar above for a cool plot!
 ggplot(post_meal_data, aes(x = Group, fill = as.character(glykemi))) +
   geom_bar(position = position_dodge())
 
-#as.character needs to be added in front of glykemi in the 'fill = ', since glykemi is a numerical information
+# as.character needs to be added in front of glykemi in the 'fill = ', since glykemi is a numerical information
+```
+## Side by side plots
+
+```{r fig-bmi-glycemia}
+#| fig-cap: "BMI and glycemia, side by side"
+#| fig-subcap:
+#| - "Distribution of BMI."
+#| - "Number of those with glycemia"
+#| layout-ncol: 2
+ggplot(post_meal_data, aes(x = BMI)) +
+  geom_histogram()
+ggplot(post_meal_data, aes(x = glykemi)) +
+  geom_bar()
 ```
 
+## Plotting two continuous variables
+
+```{r}
+#| fig-cap: "Scatterplot of BMI and the area under the curve for glucose"
+#| label: fig-bmi-auc-pg
+ggplot(post_meal_data, aes(x = BMI, y = auc_pg)) +
+  geom_point() +
+  geom_smooth()
+```
