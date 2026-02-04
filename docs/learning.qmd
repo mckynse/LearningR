@@ -59,3 +59,24 @@ ggplot(post_meal_data, aes(x = BMI)) +
 ```
 Reference to figure, using added label in code chunk
 See @fig-bmi-histo
+
+## Exercise: discrete plots
+
+```{r}
+#| fig-cap: "Group"
+#| label: fig-group-bar
+ggplot(post_meal_data, aes(x = Group)) +
+  geom_bar()
+```
+
+See @fig-group-bar above for a cool plot!
+
+## Plotting two discrete variables
+
+```{r}
+ggplot(post_meal_data, aes(x = Group, fill = as.character(glykemi))) +
+  geom_bar(position = position_dodge())
+
+#as.character needs to be added in front of glykemi in the 'fill = ', since glykemi is a numerical information
+```
+
