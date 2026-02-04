@@ -6,6 +6,9 @@ format: html
 
 Special "setup" code chunk: When you want your Quarto to run one specific, important code chunk before everything else - like loading in tidyverse
 ```{r setup}
+#| message: false
+#| warning: false
+
 #load in tidyverse; is not in itself a package but rather a meta-package
 library(tidyverse)
 
@@ -46,4 +49,13 @@ post_meal_data
 glimpse(post_meal_data)
 ```
 
+## Plot one continuous variable
 
+```{r}
+#| fig-cap: "Distribution of BMI"
+#| label: fig-bmi-histo
+ggplot(post_meal_data, aes(x = BMI)) + 
+  geom_histogram()
+```
+Reference to figure, using added label in code chunk
+See @fig-bmi-histo
