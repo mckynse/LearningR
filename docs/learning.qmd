@@ -1,6 +1,6 @@
 ---
 title: "Reproducible_Document"
-author: "rostools"
+author: "Cecilie Kynding"
 format: html
 ---
 
@@ -25,6 +25,12 @@ tidier_post_meal_data <- small_post_meal_data |>
   ) |>
   filter(glykemi == 0) |>
   select(-glykemi)
+
+tidied_post_meal_data <- tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
 
 ## About me
@@ -190,4 +196,18 @@ small_post_meal_data |>
 # using | for either/or, and & (or ,) for both arguments to be true
 small_post_meal_data |>
   filter(Group == "CTR" | BMI >= 25)
+```
+
+
+## Modifying columns
+
+```{r}
+tidier_post_meal_data |>
+  mutate(insulin_glucose_ratio = auc_insulin / auc_glucose)
+
+tidier_post_meal_data |>
+  mutate(
+    insulin_glucose_ratio = auc_insulin / auc_glucose,
+    Group = if_else(Group == "CTR", "Control", "First-degree relative")
+  )
 ```
